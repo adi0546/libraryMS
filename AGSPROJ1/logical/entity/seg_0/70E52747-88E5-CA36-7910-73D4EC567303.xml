@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="70E52747-88E5-CA36-7910-73D4EC567303" name="AGS_CUST_EXH">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:54:08 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="CUST_ID" id="B0CDB205-3576-90F9-3443-E68C6D44FC28">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:55:36 UTC</createdTime>
+<generatorID>D1999CC5-983A-DEF1-863C-B5769BFBEBBB</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>65F513C3-FBFF-664C-EB17-CC754011D54D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EVENT_ID" id="5C7E0790-8294-7789-803F-25155CA0C36D">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:56:02 UTC</createdTime>
+<generatorID>958800FA-CE1A-2227-A321-8A4EF748E595</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>C1707732-3BB2-566B-C05A-70FAEA97F403</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="REGISTRATION_ID" id="4720D05F-D4BC-258C-DCB9-1B80B2D7AE88">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:58:26 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE REGISTRATION ID FOR EACH CUSTOMER FOR EACH EXHIBITION]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="REGISTRATION_DATE" id="0CD7B99C-1851-30EF-E99E-9484FFB39BF4">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 03:04:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[REGISTRATION DATE]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1E1464C2-BA2C-CF27-4679-A768E5840B8D" name="AGS_CUST_EXH PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:58:48 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4720D05F-D4BC-258C-DCB9-1B80B2D7AE88</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

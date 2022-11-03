@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="57700F56-0FAA-7C32-D7AD-45D42A55BA0E" name="AGS_BKS_AUT">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>505810DB-EEDA-8397-24F5-777906505993</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="AGS_AUTHOR_AUTHOR_ID" id="DA998A6F-C58E-65A4-A1EA-E4E6EEA7C65E">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>34AC124C-3E61-6D5F-52F2-F864B0AB2263</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6A4DDDED-D4E0-794D-B487-42A58ED93B4B" referredColumn="93283124-72CD-733E-9AEF-C0A14D1869CB"/>
+</associations>
+</Column>
+<Column name="AGS_BOOKS_BOOK_ID" id="07BFF9DB-B55F-0605-072E-950D78A719B3">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>6AE17DC1-7FFA-F294-A752-130165BEBD0F</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="584D1F12-DF90-E848-1D93-D0F4B6600F8D" referredColumn="655E1298-B04A-12F5-8507-2BFC8E842211"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B06A3AA7-904B-A1DB-9159-2F52243903A3" name="AGS_BKS_AUT_AGS_AUTHOR_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>C63527F3-6C73-526F-C13A-9BBE87A46B09</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA998A6F-C58E-65A4-A1EA-E4E6EEA7C65E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F89EE21C-2A1A-61B6-0BA9-41DA74368FE7" name="AGS_BKS_AUT_AGS_BOOKS_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>63453BDA-7CB2-4928-4E18-F691D3B2AB4B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="07BFF9DB-B55F-0605-072E-950D78A719B3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

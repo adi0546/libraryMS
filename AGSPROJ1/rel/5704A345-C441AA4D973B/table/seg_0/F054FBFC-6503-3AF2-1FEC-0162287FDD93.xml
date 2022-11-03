@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F054FBFC-6503-3AF2-1FEC-0162287FDD93" name="AGS_BOOKS">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>60215D81-2015-9D4E-6F77-E1B159487AAD</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BOOK_ID" id="655E1298-B04A-12F5-8507-2BFC8E842211">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE BOOK ID]]></commentInRDBMS>
+<generatorID>9147D0CD-CCAC-EFA6-96A6-6F82A2554829</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BOOK_NAME" id="190BD690-4D64-9E2C-7038-3DEA2028C504">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[BOOK NAME]]></commentInRDBMS>
+<generatorID>100B7E87-2DF8-8F70-076E-848203E0953B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUBLISH_DATE" id="02AEB159-4027-7752-A7BF-D392F1D5D97C">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[BOOK PUBLISH DATE]]></commentInRDBMS>
+<generatorID>17E867D6-C26B-25AA-92F3-D53C0BA037A3</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BBAD3871-60DA-C3B8-7817-7ACC883DE7FB" name="AGS_BOOKS_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:12:14 UTC</createdTime>
+<generatorID>75AA1636-B9DF-56C6-6424-0F151AE3364F</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="655E1298-B04A-12F5-8507-2BFC8E842211"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7C1B4D6A-F41A-FBF8-CEDF-F9E94622B1DA" name="AGS_INVOICE">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:37:01 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="INVOICE_NO" id="BFEA9153-8AE2-55A8-F8BB-70EB3C3B5E6B">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:13:03 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE INVOICE NUMBER]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="INVOICE_DATE" id="1E633F30-AB88-19CE-6C17-1B3E332FA15B">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:17:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[INVOICE GENERATION DATE]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F3194397-DC2B-1D60-719D-9513D1DE59B5" name="AGS_INVOICE PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:13:16 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BFEA9153-8AE2-55A8-F8BB-70EB3C3B5E6B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

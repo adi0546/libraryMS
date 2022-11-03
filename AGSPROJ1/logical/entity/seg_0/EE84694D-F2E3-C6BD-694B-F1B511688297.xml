@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EE84694D-F2E3-C6BD-694B-F1B511688297" name="AGS_SEM_SPN">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 22:18:02 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="SPONSOR_AMOUNT" id="DB756FE9-2348-C14B-1A16-D032B6EE3A01">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 22:18:52 UTC</createdTime>
+<commentInRDBMS><![CDATA[SPONSORSHIP AMOUNT IN USD]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EVENT_ID" id="B6FCB02F-1DAB-C274-5DF7-362E76D6CD78">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 22:26:56 UTC</createdTime>
+<generatorID>B0113CCC-5728-2ADE-3AEC-639821684B11</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>C1707732-3BB2-566B-C05A-70FAEA97F403</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SPONSOR_ID" id="527A6D53-77F7-D995-E674-BBE1A31E2F1A">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 22:28:29 UTC</createdTime>
+<generatorID>61AE98B7-F51B-9627-321A-8F963B394A47</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>2DEEF252-6EC0-80DA-E040-A75F2AF8F016</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="399820AC-7FFA-7BE5-2C8E-C6CD6E53AA4B" name="AGS_PAYMENT">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 01:58:08 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="PAYMENT_ID" id="F38926BC-E6C6-C7AF-91D6-349BACABDD68">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 01:58:16 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE PAYMENT ID]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PAYMENT_METHOD" id="6CA918E0-B08F-EAAE-0FAB-A2CA91F1BB33">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 01:59:06 UTC</createdTime>
+<commentInRDBMS><![CDATA[PAYMENT METHOD FOR RENTAL]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PAYMENT_AMOUNT" id="74E5CD04-E22B-E0D8-8B24-6D37CC13457C">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:00:18 UTC</createdTime>
+<commentInRDBMS><![CDATA[PAYMENT AMOUNT FOR RENTAL IN USD]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PAYMENT_NAME" id="71C01C70-4B23-E1AF-2189-4949F3F7C5DA">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:00:45 UTC</createdTime>
+<commentInRDBMS><![CDATA[CARD HOLDER NAME OR NAME OF PERSON WHO MADE PAYMENT]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="INVOICE_NO" id="1B9B9B11-18A4-DB83-3A7B-B70183816DC6">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 02:13:23 UTC</createdTime>
+<generatorID>67A642EB-627B-FBFE-02D9-BC91795A9136</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>BFEA9153-8AE2-55A8-F8BB-70EB3C3B5E6B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="45C25B5B-7022-7C02-33C5-25A35CED8E19" name="AGS_PAYMENT PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 01:58:37 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F38926BC-E6C6-C7AF-91D6-349BACABDD68</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
