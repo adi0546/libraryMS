@@ -69,7 +69,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="ACTUAL_RET_DT" id="D74D7B99-93C6-D244-1ED4-0DECD08916BB">
 <createdBy>adi</createdBy>
@@ -97,11 +97,11 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="INVOICE_NO" id="D2343FB2-FDBF-38C3-6D0C-2615AC5A9970">
+<Attribute name="INVOICE_NO" id="5E74312E-E6BC-1C7A-492B-3EB28BBEB000">
 <createdBy>adi</createdBy>
-<createdTime>2022-11-03 04:21:03 UTC</createdTime>
+<createdTime>2022-11-03 19:33:32 UTC</createdTime>
 <generatorID>ED802D49-CDF3-30D4-2B09-8376CE3EF61D</generatorID>
 <ownerDesignName>AGSPROJ1</ownerDesignName>
 <engineerTo>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C060E7E3-5E2C-CAA8-7FB4-BE1554FABC0C" containerWithKeyObject="F2F85E99-7DA9-650F-63BA-A21E55FA809A" localFKIndex="1FA0660C-16D4-FDEF-6FF0-89685E5B36DA" name="AGS_SEM_SPN_AGS_SPONSOR_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>61AE98B7-F51B-9627-321A-8F963B394A47</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<referredTableLongName>AGS_SPONSOR</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9027934F-4E89-618C-2F81-A2E0BF3BA958</referredTableID>
+<keyObject>86EA618C-AF77-71E9-DE54-9E2ED4A108C3</keyObject>
+<referredKeyID>86EA618C-AF77-71E9-DE54-9E2ED4A108C3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>SPONSOR_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

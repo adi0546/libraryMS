@@ -10,7 +10,7 @@
 <targetPk>F3194397-DC2B-1D60-719D-9513D1DE59B5</targetPk>
 <identifying>false</identifying>
 <optionalSource>false</optionalSource>
-<optionalTarget>true</optionalTarget>
+<optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>8881F87B-0128-781C-3546-7FCA418ABF1B</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>

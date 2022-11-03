@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B14C2540-25A0-405D-2136-26A27CC0BBD0" name="AGS_CUST_EXH">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>70E52747-88E5-CA36-7910-73D4EC567303</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="REGISTRATION_ID" id="0D2DB811-A322-B5D9-AD4A-65DF34194E1B">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE REGISTRATION ID FOR EACH CUSTOMER FOR EACH EXHIBITION]]></commentInRDBMS>
+<generatorID>4720D05F-D4BC-258C-DCB9-1B80B2D7AE88</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REGISTRATION_DATE" id="1EED68B4-0E44-4984-677A-675318DE4DE8">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[REGISTRATION DATE]]></commentInRDBMS>
+<generatorID>0CD7B99C-1851-30EF-E99E-9484FFB39BF4</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CUST_ID" id="0191C6A9-7FEE-383F-29BC-C70A95E4965C">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>B0CDB205-3576-90F9-3443-E68C6D44FC28</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D5E5E960-D348-4EA2-5748-471B447F00C2" referredColumn="2683B103-A90E-244B-6FC0-F612FCE27987"/>
+</associations>
+</Column>
+<Column name="EVENT_ID" id="D178E09F-D5D3-07AA-84E7-4F8D93595B79">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>5C7E0790-8294-7789-803F-25155CA0C36D</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1CEDC039-3255-788F-E069-848768154F09" referredColumn="4C4ACB90-E5BA-C833-E971-D2EE9D0DBCFB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AF0F1A16-10FF-60C4-9401-4848280F9E17" name="AGS_CUST_EXH_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>1E1464C2-BA2C-CF27-4679-A768E5840B8D</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D2DB811-A322-B5D9-AD4A-65DF34194E1B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BC3E10FF-36E7-0757-4321-C27CCCA817E3" name="AGS_CUST_EXH_AGS_CUSTOMER_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>D1999CC5-983A-DEF1-863C-B5769BFBEBBB</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0191C6A9-7FEE-383F-29BC-C70A95E4965C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FED73F16-D0D4-E99F-EC35-637214E7EFF3" name="AGS_CUST_EXH_AGS_EXHIBITION_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>958800FA-CE1A-2227-A321-8A4EF748E595</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D178E09F-D5D3-07AA-84E7-4F8D93595B79"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

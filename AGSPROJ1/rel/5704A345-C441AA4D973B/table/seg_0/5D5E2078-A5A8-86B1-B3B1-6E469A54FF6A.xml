@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5D5E2078-A5A8-86B1-B3B1-6E469A54FF6A" name="AGS_SEMINAR">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>5A239B8F-83A0-E9D6-1AB1-B9B8428ABD5B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EVENT_ID" id="79E0FFCE-05A4-445B-D86F-EF3E3B8698A5">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE EVENT ID]]></commentInRDBMS>
+<generatorID>C1707732-3BB2-566B-C05A-70FAEA97F403</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C8BA3331-A215-EEA6-F8C1-B03E5C4D32CF" referredColumn="705827EF-0243-75BF-C50A-7B8607842E04"/>
+</associations>
+</Column>
+<Column name="INVITATION_CODE" id="7B9CD0F6-EB0E-1CA5-A686-C8C98E56B2B5">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[SEMINAR INVITATION ID/CODE]]></commentInRDBMS>
+<generatorID>11660A6E-2A2E-F5A6-F3B7-6E5692FE1335</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="89F8C072-E949-C64C-73BB-7B657FEB570D" name="AGS_SEMINAR_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>F63D841E-974A-B077-29E2-8CA7A64000F8</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79E0FFCE-05A4-445B-D86F-EF3E3B8698A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="313136D6-4E4B-FEB1-0899-2A5B5E82C107" name="AGS_SEMINAR_AGS_EVENT_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>CAE85AE2-1014-3957-01F5-265FA6451DB9</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79E0FFCE-05A4-445B-D86F-EF3E3B8698A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

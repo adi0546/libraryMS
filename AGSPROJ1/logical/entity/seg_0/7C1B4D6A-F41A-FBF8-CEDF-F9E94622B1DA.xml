@@ -42,6 +42,21 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="RENTAL_ID" id="64E96659-D6ED-6AF6-AA13-093E0E4EF95B">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:40 UTC</createdTime>
+<generatorID>ED802D49-CDF3-30D4-2B09-8376CE3EF61D</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>9EDF50F0-20E0-D7B5-D3C6-EBBA9B5B070D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="F3194397-DC2B-1D60-719D-9513D1DE59B5" name="AGS_INVOICE PK">
