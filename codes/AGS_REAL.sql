@@ -240,6 +240,7 @@ ALTER TABLE ags_inventory ADD CONSTRAINT ags_inventory_pk PRIMARY KEY ( copy_id 
 CREATE TABLE ags_invoice (
     invoice_no   BIGINT NOT NULL COMMENT 'UNIQUE INVOICE NUMBER',
     invoice_date DATETIME NOT NULL COMMENT 'INVOICE GENERATION DATE',
+    invoice_amount BIGINT NOT NULL COMMENT 'INVOICE AMOUNT',
     rental_id    BIGINT NOT NULL
 );
 
@@ -503,15 +504,15 @@ ALTER TABLE ags_seminar
         REFERENCES ags_event ( event_id );
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
-DROP TRIGGER IF EXISTS arc_fkarc_2_ags_exhibition;
+DROP TRIGGER IF EXISTS arc_fkarc_2_ags_exhibition_ins;
 
 DELIMITER //
 
-CREATE TRIGGER arc_fkarc_2_ags_exhibition BEFORE
-    INSERT OR UPDATE OF event_id ON ags_exhibition
+CREATE TRIGGER arc_fkarc_2_ags_exhibition_ins BEFORE INSERT ON ags_exhibition
     FOR EACH ROW
-    DECLARE d CHAR(1);
+    
 BEGIN
+	DECLARE d CHAR(1);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
         a.event_type
@@ -519,32 +520,24 @@ BEGIN
     FROM
         ags_event a
     WHERE
-        a.event_id = :new.event_id;
+        a.event_id = new.event_id;
 
     IF ( d IS NULL OR d <> 'E' ) THEN
-        raise_application_error(-20223, 'FK AGS_EXHIBITION_AGS_EVENT_FK in Table AGS_EXHIBITION violates Arc constraint on Table AGS_EVENT - discriminator column EVENT_TYPE doesn''t have value ''E'''
-        );
+    SIGNAL SQLSTATE '560BF' SET MESSAGE_TEXT = 'FK AGS_EXHIBITION_AGS_EVENT_FK in Table AGS_EXHIBITION violates Arc constraint on Table AGS_EVENT - discriminator column EVENT_TYPE doesn''t have value ''E''';
     END IF;
-
-    DECLARE EXIT HANDLER FOR not found BEGIN
-        NULL;
-    END;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
-        RESIGNAL;
-    END;
 END;
-/
+//
+DELIMITER ;
 
--- SQLINES LICENSE FOR EVALUATION USE ONLY
-DROP TRIGGER IF EXISTS arc_fkarc_2_ags_seminar;
+DROP TRIGGER IF EXISTS arc_fkarc_2_ags_exhibition_upd;
 
 DELIMITER //
 
-CREATE TRIGGER arc_fkarc_2_ags_seminar BEFORE
-    INSERT OR UPDATE OF event_id ON ags_seminar
+CREATE TRIGGER arc_fkarc_2_ags_exhibition_upd BEFORE UPDATE ON ags_exhibition
     FOR EACH ROW
-    DECLARE d CHAR(1);
+    
 BEGIN
+	DECLARE d CHAR(1);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
         a.event_type
@@ -552,21 +545,66 @@ BEGIN
     FROM
         ags_event a
     WHERE
-        a.event_id = :new.event_id;
+        a.event_id = new.event_id;
+
+    IF ( d IS NULL OR d <> 'E' ) THEN
+    SIGNAL SQLSTATE '560BF' SET MESSAGE_TEXT = 'FK AGS_EXHIBITION_AGS_EVENT_FK in Table AGS_EXHIBITION violates Arc constraint on Table AGS_EVENT - discriminator column EVENT_TYPE doesn''t have value ''E''';
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TRIGGER IF EXISTS arc_fkarc_2_ags_seminar_ins;
+
+DELIMITER //
+
+CREATE TRIGGER arc_fkarc_2_ags_seminar_ins BEFORE INSERT ON ags_seminar
+    FOR EACH ROW
+    
+BEGIN
+	DECLARE d CHAR(1);
+    -- SQLINES LICENSE FOR EVALUATION USE ONLY
+    SELECT
+        a.event_type
+    INTO d
+    FROM
+        ags_event a
+    WHERE
+        a.event_id = new.event_id;
 
     IF ( d IS NULL OR d <> 'S' ) THEN
-        raise_application_error(-20223, 'FK AGS_SEMINAR_AGS_EVENT_FK in Table AGS_SEMINAR violates Arc constraint on Table AGS_EVENT - discriminator column EVENT_TYPE doesn''t have value ''S'''
-        );
+    SIGNAL SQLSTATE '560BF' SET MESSAGE_TEXT = 'FK AGS_SEMINAR_AGS_EVENT_FK in Table AGS_SEMINAR violates Arc constraint on Table AGS_EVENT - discriminator column EVENT_TYPE doesn''t have value ''S''';
     END IF;
-
-    DECLARE EXIT HANDLER FOR not found BEGIN
-        NULL;
-    END;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
-        RESIGNAL;
-    END;
 END;
-/
+//
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS arc_fkarc_2_ags_seminar_upd;
+
+DELIMITER //
+
+CREATE TRIGGER arc_fkarc_2_ags_seminar_upd BEFORE UPDATE ON ags_seminar
+    FOR EACH ROW
+    
+BEGIN
+	DECLARE d CHAR(1);
+    -- SQLINES LICENSE FOR EVALUATION USE ONLY
+    SELECT
+        a.event_type
+    INTO d
+    FROM
+        ags_event a
+    WHERE
+        a.event_id = new.event_id;
+
+    IF ( d IS NULL OR d <> 'S' ) THEN
+    SIGNAL SQLSTATE '560BF' SET MESSAGE_TEXT = 'FK AGS_SEMINAR_AGS_EVENT_FK in Table AGS_SEMINAR violates Arc constraint on Table AGS_EVENT - discriminator column EVENT_TYPE doesn''t have value ''S''';
+    END IF;
+END;
+//
+DELIMITER ;
 
 
 

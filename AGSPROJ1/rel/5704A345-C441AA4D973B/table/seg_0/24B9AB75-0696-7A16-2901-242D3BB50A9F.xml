@@ -33,6 +33,19 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="INVOICE_AMOUNT" id="44775866-5347-34E5-5984-0C10C1A86993">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-04 00:45:50 UTC</createdTime>
+<commentInRDBMS><![CDATA[INVOICE AMOUNT]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="RENTAL_ID" id="04B21F0D-12EB-59EC-8784-194F911A3291">
 <createdBy>adi</createdBy>
 <createdTime>2022-11-03 19:40:48 UTC</createdTime>
