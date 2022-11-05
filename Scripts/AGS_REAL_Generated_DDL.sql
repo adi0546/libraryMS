@@ -606,8 +606,6 @@ END;
 //
 DELIMITER ;
 
-
-
 -- SQLINES DEMO *** per Data Modeler Summary Report: 
 -- 
 -- SQLINES DEMO ***                        18
