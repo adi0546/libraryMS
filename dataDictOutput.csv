@@ -1,0 +1,75 @@
+"TABLE_NAME";"schema_name";"COLUMN_NAME";"CONSTRAINTS";"OPTIONAL";"COLUMN_TYPE";"COLUMN_COMMENT"
+"ags_author";"REAL";"author_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE AUTHOR ID"
+"ags_author";"REAL";"city";NULL;"NO";"varchar(30)";"AUTHOR CITY ADDRESS"
+"ags_author";"REAL";"email";NULL;"NO";"varchar(30)";"AUTHOR EMAIL ID"
+"ags_author";"REAL";"fname";NULL;"NO";"varchar(30)";"AUTHOR FIRST NAME"
+"ags_author";"REAL";"lname";NULL;"NO";"varchar(30)";"AUTHOR LAST NAME"
+"ags_author";"REAL";"state";NULL;"NO";"varchar(30)";"AUTHOR STATE"
+"ags_author";"REAL";"street_addr1";NULL;"NO";"varchar(30)";"AUTHOR STREET ADDRESS1"
+"ags_author";"REAL";"street_addr2";NULL;"YES";"varchar(30)";"AUTHOR STREET ADDRESS2"
+"ags_author";"REAL";"zipcode";NULL;"NO";"varchar(10)";"AUTHOR ZIPCODE ADDRESS"
+"ags_bks_aut";"REAL";"author_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";
+"ags_bks_aut";"REAL";"book_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";
+"ags_bks_tpc";"REAL";"book_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";
+"ags_bks_tpc";"REAL";"topic_id";"FOREIGN KEY,PRIMARY KEY";"NO";"smallint(6)";
+"ags_books";"REAL";"book_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE BOOK ID"
+"ags_books";"REAL";"book_name";NULL;"NO";"varchar(30)";"BOOK NAME"
+"ags_books";"REAL";"publish_date";NULL;"NO";"datetime";"BOOK PUBLISH DATE"
+"AGS_CUSTOMER";"REAL";"cust_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE CUSTOMER ID"
+"AGS_CUSTOMER";"REAL";"email";NULL;"NO";"varchar(30)";"CUSTOMER EMAIL ID"
+"AGS_CUSTOMER";"REAL";"fname";NULL;"NO";"varchar(30)";"CUSTOMER FIRST NAME"
+"AGS_CUSTOMER";"REAL";"id_num";NULL;"NO";"varchar(20)";"CUSTOMER ID NUMBER"
+"AGS_CUSTOMER";"REAL";"id_type";NULL;"NO";"char(1)";"CUSTOMER ID TYPE IN 'P'(PASSPORT), 'S'(SSN) OR 'D'(DRIVING LICENSE)"
+"AGS_CUSTOMER";"REAL";"lname";NULL;"NO";"varchar(30)";"CUSTOMER LAST NAME"
+"AGS_CUSTOMER";"REAL";"midname";NULL;"YES";"varchar(30)";"CUSTOMER MID NAME"
+"AGS_CUSTOMER";"REAL";"phoneno";NULL;"NO";"bigint(20)";"CUSTOMER US PHONE NUMBER"
+"ags_cust_exh";"REAL";"cust_id";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_cust_exh";"REAL";"event_id";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_cust_exh";"REAL";"registration_date";NULL;"NO";"datetime";"REGISTRATION DATE"
+"ags_cust_exh";"REAL";"registration_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE REGISTRATION ID FOR EACH CUSTOMER FOR EACH EXHIBITION"
+"ags_event";"REAL";"description";NULL;"YES";"varchar(150)";"EVENT DESCRIPTION"
+"ags_event";"REAL";"end_date";NULL;"NO";"datetime";"EVENT END DATE"
+"ags_event";"REAL";"event_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE EVENT ID"
+"ags_event";"REAL";"event_type";NULL;"NO";"char(1)";"EVENT TYPE 'S'(SEMINAR) OR 'E'(EXHIBITION)"
+"ags_event";"REAL";"e_name";NULL;"NO";"varchar(20)";"EVENT NAME"
+"ags_event";"REAL";"start_date";NULL;"NO";"datetime";"EVENT START DATE"
+"ags_event";"REAL";"topic_id";"FOREIGN KEY";"NO";"smallint(6)";
+"ags_exhibition";"REAL";"event_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";"UNIQUE EVENT ID"
+"ags_exhibition";"REAL";"expenses";NULL;"NO";"decimal(10,2)";"EXHIBITION EXPENSES IN USD"
+"ags_inventory";"REAL";"book_id";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_inventory";"REAL";"copy_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE COPY ID"
+"ags_inventory";"REAL";"status";NULL;"NO";"char(1)";"COPY STATUS 'A'(AVAILABLE) OR 'U'(UNAVAILABLE)"
+"ags_invoice";"REAL";"invoice_amount";NULL;"NO";"decimal(6,2)";"INVOICE AMOUNT"
+"ags_invoice";"REAL";"invoice_date";NULL;"NO";"datetime";"INVOICE GENERATION DATE"
+"ags_invoice";"REAL";"invoice_no";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE INVOICE NUMBER"
+"ags_invoice";"REAL";"rental_id";"FOREIGN KEY,UNIQUE";"NO";"bigint(20)";
+"ags_payment";"REAL";"invoice_no";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_payment";"REAL";"payment_amount";NULL;"NO";"decimal(6,2)";"PAYMENT AMOUNT FOR RENTAL IN USD"
+"ags_payment";"REAL";"payment_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE PAYMENT ID"
+"ags_payment";"REAL";"payment_method";NULL;"NO";"varchar(30)";"PAYMENT METHOD FOR RENTAL"
+"ags_payment";"REAL";"payment_name";NULL;"NO";"varchar(30)";"CARD HOLDER NAME OR NAME OF PERSON WHO MADE PAYMENT"
+"ags_rental";"REAL";"actual_ret_dt";NULL;"YES";"datetime";"ACTUAL RENTAL RETURN DATE"
+"ags_rental";"REAL";"borrow_date";NULL;"NO";"datetime";"RENTAL BORROW DATE"
+"ags_rental";"REAL";"copy_id";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_rental";"REAL";"cust_id";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_rental";"REAL";"rental_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE RENTAL ID"
+"ags_rental";"REAL";"rental_status";NULL;"NO";"char(1)";"RENTAL STATUS: 'B' BORROWED, 'R' RETURNED OR 'L' LATE"
+"ags_reservation";"REAL";"cust_id";"FOREIGN KEY";"NO";"bigint(20)";
+"ags_reservation";"REAL";"reservation_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE RESERVATION ID"
+"ags_reservation";"REAL";"room_id";"FOREIGN KEY";"NO";"smallint(6)";
+"ags_reservation";"REAL";"time_slot";NULL;"NO";"char(1)";"ONE OF THE 4 TIME SLOTS OF RESERVATION"
+"ags_room";"REAL";"capacity";NULL;"NO";"smallint(6)";"MAXIMUM NUMBER OF PEOPLE IN THE ROOM AT A TIME"
+"ags_room";"REAL";"room_id";"PRIMARY KEY";"NO";"smallint(6)";"UNIQUE ROOM ID"
+"ags_room";"REAL";"room_name";NULL;"NO";"varchar(30)";"NAME OF THE ROOM"
+"ags_seminar";"REAL";"event_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";"UNIQUE EVENT ID"
+"ags_seminar";"REAL";"invitation_code";NULL;"NO";"varchar(30)";"SEMINAR INVITATION ID/CODE"
+"ags_sem_spn";"REAL";"event_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";
+"ags_sem_spn";"REAL";"sponsor_amount";NULL;"NO";"decimal(12,2)";"SPONSORSHIP AMOUNT IN USD"
+"ags_sem_spn";"REAL";"sponsor_id";"FOREIGN KEY,PRIMARY KEY";"NO";"bigint(20)";
+"ags_sponsor";"REAL";"email";NULL;"NO";"varchar(30)";"SPONSOR EMAIL"
+"ags_sponsor";"REAL";"fname";NULL;"NO";"varchar(30)";"SPONSOR FIRST NAME"
+"ags_sponsor";"REAL";"lname";NULL;"YES";"varchar(30)";"SPONSOR LAST NAME"
+"ags_sponsor";"REAL";"phoneno";NULL;"NO";"bigint(20)";"SPONSOR PHONE NUMBER"
+"ags_sponsor";"REAL";"sponsor_id";"PRIMARY KEY";"NO";"bigint(20)";"UNIQUE SPONSOR ID"
+"ags_topics";"REAL";"topic_id";"PRIMARY KEY";"NO";"smallint(6)";"UNIQUE TOPIC ID"
+"ags_topics";"REAL";"topic_name";NULL;"NO";"varchar(30)";"TOPIC NAME"

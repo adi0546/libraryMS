@@ -52,6 +52,7 @@
 <commentInRDBMS><![CDATA[ACTUAL RENTAL RETURN DATE]]></commentInRDBMS>
 <generatorID>D74D7B99-93C6-D244-1ED4-0DECD08916BB</generatorID>
 <ownerDesignName>AGSPROJ1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>

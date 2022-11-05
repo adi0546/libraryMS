@@ -244,7 +244,7 @@ CREATE TABLE ags_rental (
     rental_id     NUMBER(10) NOT NULL,
     rental_status CHAR(1) NOT NULL,
     borrow_date   DATE NOT NULL,
-    actual_ret_dt DATE NOT NULL,
+    actual_ret_dt DATE,
     copy_id       NUMBER(10) NOT NULL,
     cust_id       NUMBER(10) NOT NULL
 );
