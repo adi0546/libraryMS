@@ -10,6 +10,8 @@ ALTER TABLE ags_inventory ADD CONSTRAINT CHK_STATUS_AU CHECK (status = 'A' OR st
 ALTER TABLE ags_reservation
 ADD CONSTRAINT CHK_TIME_SLOT_1234 CHECK (time_slot = '1' OR time_slot = '2' OR time_slot = '3' OR time_slot = '4');
 
+ALTER TABLE ags_reservation
+ADD CONSTRAINT CHK_RES_DATE_SLOT_UNQ UNIQUE (reservation_date,time_slot,room_id);
 
 /*TRIGGER TO GENERATE INVOICE*/
 DROP TRIGGER IF EXISTS trigger_ags_rental_upd;
@@ -20,15 +22,6 @@ CREATE TRIGGER trigger_ags_rental_upd BEFORE UPDATE ON ags_rental
     FOR EACH ROW
     
 BEGIN
-	DECLARE d DATETIME;
-    SELECT
-        r.actual_ret_dt
-    INTO d
-    FROM
-        ags_rental r
-    WHERE
-        r.rental_id = new.rental_id;
-
     IF (new.actual_ret_dt IS NOT NULL) THEN
     BEGIN
     set @actDate = new.actual_ret_dt;

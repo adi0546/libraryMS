@@ -73,6 +73,19 @@
 <dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="RESERVATION_DATE" id="13AE30B9-1E5C-264B-5866-197AC94286F3">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-05 19:57:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[DATE OF RESERVATION]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="76C211F8-BCAE-01DE-D716-9BD6C326FB79" name="AGS_RESERVATION PK">

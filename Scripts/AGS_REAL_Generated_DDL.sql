@@ -317,10 +317,11 @@ ALTER TABLE ags_rental ADD CONSTRAINT ags_rental_pk PRIMARY KEY ( rental_id );
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 CREATE TABLE ags_reservation (
-    reservation_id BIGINT NOT NULL COMMENT 'UNIQUE RESERVATION ID',
-    time_slot      CHAR(1) NOT NULL COMMENT 'ONE OF THE 4 TIME SLOTS OF RESERVATION',
-    cust_id        BIGINT NOT NULL,
-    room_id        SMALLINT NOT NULL
+    reservation_id      BIGINT NOT NULL COMMENT 'UNIQUE RESERVATION ID',
+    time_slot           CHAR(1) NOT NULL COMMENT 'ONE OF THE 4 TIME SLOTS OF RESERVATION',
+    reservation_date    DATETIME NOT NULL COMMENT 'DATE OF RESERVATION',
+    cust_id             BIGINT NOT NULL,
+    room_id             SMALLINT NOT NULL
 );
 
 /* Moved to CREATE TABLE

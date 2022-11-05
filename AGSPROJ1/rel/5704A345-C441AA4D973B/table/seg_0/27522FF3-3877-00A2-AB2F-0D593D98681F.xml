@@ -34,6 +34,17 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="RESERVATION_DATE" id="5DF83BAB-A7CB-7315-AFAD-8CBB13D5A0D3">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-05 19:58:57 UTC</createdTime>
+<commentInRDBMS><![CDATA[DATE OF RESERVATION]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="CUST_ID" id="564285A9-95E9-5305-6A83-5A15E3AC0E7F">
 <createdBy>adi</createdBy>
 <createdTime>2022-11-03 19:40:48 UTC</createdTime>

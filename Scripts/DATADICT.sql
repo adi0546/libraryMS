@@ -22,6 +22,3 @@ AND c.table_name = cons.table_name
 and c.column_name = cons.column_name
 where c.table_schema = 'REAL') t
 group by t.schema_name,t.table_name,t.column_name;
-
-
-
