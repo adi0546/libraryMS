@@ -1,5 +1,7 @@
 select * from ags_customer;
 
+delete from ags_customer where cust_id = 115;
+
 ALTER TABLE ags_customer
 ADD password nvarchar(70);
 
@@ -19,4 +21,8 @@ ADD username nvarchar(30);
 
 ALTER TABLE ags_customer
 ADD CONSTRAINT UC_customer_uName UNIQUE (username);
+
+
+
+
 
