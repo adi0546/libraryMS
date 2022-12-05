@@ -3,7 +3,7 @@ from flaskext.mysql import MySQL
 #import MySQLdb.cursors
 import re
 import hashlib
-from datetime import datetime
+from datetime import datetime,date,timedelta
 
 app = Flask(__name__)
 app.secret_key = 'mykey12345asgproj1'
@@ -272,3 +272,67 @@ def profile():
         msg = 'Please fill out the form !'
     return render_template('profile.html', msg = msg, customer = customer)
 
+
+@app.route('/rooms')
+def rooms(msg = ''):
+    if session:
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('select * from ags_room')
+        rooms = cursor.fetchall()
+        today = date.today()
+        minDate = today + timedelta(days = 1)
+        maxDate = today + timedelta(days = 30)
+        cursor.execute('''select res.reservation_id,r.room_id,r.room_name, date(res.reservation_date) as resDt,
+                case when res.time_slot = 1 then '8 AM - 10 AM' when res.time_slot = 2 then '11 AM - 1 PM' when res.time_slot = 3 then '1 PM - 3 PM' else '4 PM - 6 PM' end as time_slot
+                from ags_reservation res
+                left join ags_room r on r.room_id = res.room_id
+                where res.cust_id = '%s'
+                order by reservation_date desc, res.time_slot desc''',(session['id'],))
+        reservations = cursor.fetchall()
+        return  render_template('rooms.html', rooms = rooms, reservations = reservations, msg=msg, minDate = minDate, maxDate = maxDate)
+    else:
+        return render_template('login2.html', msg = 'Not logged in. Please login again')
+
+@app.route('/bookRoom', methods =['GET', 'POST'])
+def bookRoom():
+    msg = ''
+    if request.method == 'POST' and 'roomId' in request.form and 'bookDate' in request.form and 'bookTime' in request.form:
+        roomId = request.form['roomId']
+        bookDate = request.form['bookDate']
+        bookTime = request.form['bookTime']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('select * from ags_reservation where room_id = %s and reservation_date = %s and time_slot = %s', (roomId, bookDate, bookTime))
+        reservation = cursor.fetchone()
+        if reservation:
+            msg = 'Sorry this slot is not available. Please select other slot and try again.'
+        else:
+            cursor.execute('select max(reservation_id) from ags_reservation')
+            resId = cursor.fetchone()
+            resId = str(int(resId[0]) + 1)
+            cursor.execute('insert into ags_reservation values (%s, %s, %s, %s, %s )' , (resId, bookTime, session['id'],roomId,bookDate))
+            conn.commit()
+            msg = 'Successfully Booked Room. See My Bookings'
+    else:
+        msg = 'Some error occurred. Please select all the fields and try again.'
+    return rooms(msg)
+
+@app.route('/events')
+def events(msg = ''):
+    if session:
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('call AGS_BOOK_HIST_BY_ID( % s)', (session['id'],))
+        bookHist = cursor.fetchall()
+
+        cursor.execute('''select r.rental_id, b.book_name, r.borrow_date, DATE_ADD(r.borrow_date, INTERVAL 1 MONTH) as expRetDt 
+                from ags_rental r
+                left join ags_inventory i on r.copy_id = i.copy_id
+                left join ags_books b on i.book_id = b.book_id
+                where r.rental_status = 'B'
+                AND r.cust_id = % s''',(session['id'],))
+        bookBor = cursor.fetchall()
+        return  render_template('books.html', bookHist = bookHist, bookBor = bookBor, msg=msg)
+    else:
+        return render_template('login2.html', msg = 'Not logged in. Please login again')
