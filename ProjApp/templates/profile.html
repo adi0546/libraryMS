@@ -34,17 +34,20 @@
                                 <div class="col-lg-6">
 
                                     <div class="form-outline mb-4">
+                                        <p>First Name: 
                                         <input type="text" id="fName" name="fName" class="form-control"
-                                            value="{{customer[1]}}" required />
+                                            value="{{customer[1]}}" required /></p>
                                     </div>
                                     <div class="form-outline mb-4">
+                                        <p>Last Name:
                                         <input type="text" id="lName" name="lName" class="form-control"
-                                        value="{{customer[3]}}" required />
+                                        value="{{customer[3]}}" required /></p>
                                     </div>
 
                                     <div class="form-outline mb-4">
+                                        <p>Email:
                                         <input type="email" id="email" name="email" class="form-control"
-                                        value="{{customer[5]}}" required />
+                                        value="{{customer[5]}}" required /></p>
                                     </div>
 
 
@@ -55,16 +58,19 @@
                                 <div class="col-lg-6">
 
                                     <div class="form-outline mb-4">
+                                        <p>Middle Name:
                                         <input type="text" id="mName" name="mName" class="form-control"
-                                        value="{{customer[2]}}" />
+                                        value="{{customer[2]}}" /></p>
                                     </div>
 
                                     <div class="form-outline mb-4">
+                                        <p>Phone Number:
                                         <input type="text" id="phoneNo" name="phoneNo" class="form-control"
-                                        value="{{customer[4]}}" required />
+                                        value="{{customer[4]}}" required /></p>
                                     </div>
 
                                     <div class="form-outline mb-4">
+                                        <p>ID Type:
                                         <select name=idType class="form-select" aria-label="Default select example">
                                             <option>Select the ID Type</option>
                                             {% if customer[6] == 'P' %}
@@ -82,11 +88,12 @@
                                             {% else %}
                                             <option value="S">SSN</option>
                                             {% endif %}
-                                        </select>
+                                        </select></p>
                                     </div>
                                     <div class="form-outline mb-4">
+                                        <p>Id Number:
                                         <input type="text" id="idNumber" name="idNumber" class="form-control"
-                                        value="{{customer[7]}}" required />
+                                        value="{{customer[7]}}" required /></p>
                                     </div>
 
                                 </div>
@@ -94,7 +101,7 @@
                             <div class="text-danger">{{ msg }}</div>
 
                             <div class="text-center pt-1 mb-5 pb-1">
-                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                <button class="btn btn-secondary"
                                     type="submit">Update</button>
                             </div>
                         </form>

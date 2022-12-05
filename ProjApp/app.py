@@ -106,9 +106,9 @@ def register():
     return render_template('register.html', msg = msg)
 
 @app.route('/home')
-def home():
+def home(msg = ''):
     if session:
-
+        
         conn = mysql.connect()
         cursor =conn.cursor()
         cursor.execute(
@@ -120,7 +120,7 @@ def home():
         ets = cursor.fetchall()
 
         cursor.execute(
-            '''select cpy.book_name, cpy.copies, GROUP_CONCAT(' ',a.fname,' ',a.lname) AS authors from
+            '''select cpy.book_id,cpy.book_name, cpy.copies, GROUP_CONCAT(' ',a.fname,' ',a.lname) AS authors from
             (select b.book_id, b.book_name,count(*) as copies from ags_books b 
             inner join ags_inventory i on b.book_id = i.book_id
             where i.status = 'A'
@@ -131,17 +131,69 @@ def home():
             )
         books = cursor.fetchall()
 
-        return  render_template('home.html',events = ets,books = books, date = datetime.now().strftime("%d-%b-%Y %H.%M %p"))
+        return  render_template('home.html',events = ets,books = books, date = datetime.now().strftime("%d-%b-%Y %H.%M %p"), msg = msg)
     else:
         return render_template('login2.html', msg = 'Not logged in. Please login again')
 
+@app.route('/borrow', methods =['GET', 'POST'])
+def borrow():
+    if request.method == 'POST' and 'bookId' in request.form:
+        bookId = request.form['bookId']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('select copy_id from ags_inventory where book_id = %s and status = \'A\' limit 1', (bookId,))
+        book = cursor.fetchone()
+        if not book:
+            msg = 'Sorry the book is no longer available. Please try later.'
+        else:
+            cursor.execute('update ags_inventory set status = \'U\' where copy_id = %s', str(book[0]))
+            cursor.execute('select max(rental_id) from ags_rental')
+            rentalId = cursor.fetchone()
+            cursor.execute('''INSERT INTO ags_rental (rental_id, rental_status, borrow_date, actual_ret_dt, copy_id, cust_id) VALUES 
+                                 (% s, 'B', now(), NULL, % s, % s)''',(str(int(rentalId[0]) + 1), str(book[0]), session['id']))
+            conn.commit()
+            msg = 'Successfully Rented'# + str(int(rentalId[0]) + 1) + str(book[0])
+    return home(msg)
+
 @app.route('/books')
-def books():
+def books(msg = ''):
     if session:
-        return  render_template('books.html')
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('call AGS_BOOK_HIST_BY_ID( % s)', (session['id'],))
+        bookHist = cursor.fetchall()
+
+        cursor.execute('''select r.rental_id, b.book_name, r.borrow_date, DATE_ADD(r.borrow_date, INTERVAL 1 MONTH) as expRetDt 
+                from ags_rental r
+                left join ags_inventory i on r.copy_id = i.copy_id
+                left join ags_books b on i.book_id = b.book_id
+                where r.rental_status = 'B'
+                AND r.cust_id = % s''',(session['id'],))
+        bookBor = cursor.fetchall()
+        return  render_template('books.html', bookHist = bookHist, bookBor = bookBor, msg=msg)
     else:
         return render_template('login2.html', msg = 'Not logged in. Please login again')
-        
+    
+@app.route('/returnBook', methods =['GET', 'POST'])
+def returnBook():
+    msg = ''
+    if request.method == 'POST' and 'rentalId' in request.form:
+        rentalId = request.form['rentalId']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('select copy_id from ags_rental where rental_id = % s and rental_status = \'B\'', (rentalId,))
+        copy = cursor.fetchone()
+        if not copy:
+            msg = 'You don\'t have the book you are trying to return. Please check again.'
+        else:
+            cursor.execute('update ags_inventory set status = \'A\' where copy_id = %s', str(copy[0]))
+
+            cursor.execute('update ags_rental set actual_ret_dt = now() where rental_id = %s ' , (rentalId,))
+            conn.commit()
+            msg = 'Successfully Returned'# + str(int(rentalId[0]) + 1) + str(book[0])
+    else:
+        msg = 'Some error occurred. Please complain to Admin.'
+    return books(msg)
 
 @app.route('/profile', methods =['GET', 'POST'])
 def profile():
@@ -219,3 +271,4 @@ def profile():
     elif request.method == 'POST':
         msg = 'Please fill out the form !'
     return render_template('profile.html', msg = msg, customer = customer)
+

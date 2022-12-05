@@ -21,16 +21,17 @@
               </div>
             </div>
           </nav>
-    </br></br>
-        <div align="center">
-          <div align="center">
+    <section class="h-100 gradient-form" style="background-color: rgba(32, 28, 28, 0.49);">
+      <div class="container-xxl h-100" align="center">
+              <div class="card rounded-3 text-black" align="center">
+                  <div class="card-body p-md-5 mx-md-4 " align="center">
              <div class="header">
-                <h1 class="word">Welcome to REAL</h1>
+                <h2 class="word">Welcome to REAL</h2>
              </div>
              <br><br>
              <div class="row g-0">
               <div class="col-lg-6">
-                <h1>Book Inventory as of {{date}}</h1>
+                <h3>Book Inventory as of {{date}}</h3>
                   <br><br>
                   <div class = "table-wrapper-scroll-y my-custom-scrollbar">
                     <table id="dtBasicExample" class="table mx-auto table-sm table-hover table-dark" style="width: 98%;"cellspacing="0" width="100%">
@@ -47,16 +48,19 @@
                       </thead>
                       <tbody>
                         {% for book in books %}
+                        <form action="{{ url_for('borrow') }}" method="post">
+                        <input type="hidden" id="bookId" name="bookId" value={{book[0]}}>
                         <tr>
-                          <td>{{book[0]}}</td>
                           <td>{{book[1]}}</td>
-                          {% if book[2] %}
                           <td>{{book[2]}}</td>
+                          {% if book[3] %}
+                          <td>{{book[3]}}</td>
                           {% else %}
                           <td>Info Not available</td>
                           {% endif %}
-                          <td><a type = 'button' class = 'btn btn-outline-secondary'>Borrow this Book</a></td>
+                          <td><button class="btn btn-secondary" type="submit">Borrow this Book</button></td>
                         </tr>
+                      </form>
                         {% endfor %}
                       </tbody>
                     </table>
@@ -64,8 +68,8 @@
                 </div>
                 <div class="col-lg-6">
                   
-                  <h1>Upcoming Events in the Library</h1>
-                  <br><br><br><br>
+                  <h3>Upcoming Events in the Library</h3>
+                  <br><br>
                   <div class = "table-wrapper-scroll-y my-custom-scrollbar">
                   <table id="dtBasicExample" class="table mx-auto table-sm table-hover table-dark" style="width: 98%;"cellspacing="0" width="100%">
                     <thead>
@@ -104,7 +108,11 @@
                 </div>
                 </div>
                 </div>
+                <br><br>
+                <div class="text-danger">{{ msg }}</div>
+              </div>
           </div>
-        </div>
+  </div>
+</section>
     </body>
 </html>
