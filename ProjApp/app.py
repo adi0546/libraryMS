@@ -137,6 +137,7 @@ def home(msg = ''):
 
 @app.route('/borrow', methods =['GET', 'POST'])
 def borrow():
+    msg = ''
     if request.method == 'POST' and 'bookId' in request.form:
         bookId = request.form['bookId']
         conn = mysql.connect()
@@ -283,8 +284,7 @@ def rooms(msg = ''):
         today = date.today()
         minDate = today + timedelta(days = 1)
         maxDate = today + timedelta(days = 30)
-        cursor.execute('''select res.reservation_id,r.room_id,r.room_name, date(res.reservation_date) as resDt,
-                case when res.time_slot = 1 then '8 AM - 10 AM' when res.time_slot = 2 then '11 AM - 1 PM' when res.time_slot = 3 then '1 PM - 3 PM' else '4 PM - 6 PM' end as time_slot
+        cursor.execute('''select res.reservation_id,r.room_id,r.room_name, date(res.reservation_date) as resDt, getTimeSlot(time_slot) AS timeSlot
                 from ags_reservation res
                 left join ags_room r on r.room_id = res.room_id
                 where res.cust_id = '%s'
@@ -323,16 +323,47 @@ def events(msg = ''):
     if session:
         conn = mysql.connect()
         cursor =conn.cursor()
-        cursor.execute('call AGS_BOOK_HIST_BY_ID( % s)', (session['id'],))
-        bookHist = cursor.fetchall()
+        cursor.execute('''select ce.registration_id, e.e_name, e.description,e.start_date,e.end_date from ags_cust_exh ce
+                left join ags_exhibition ex on ex.event_id = ce.event_id
+                inner join ags_event e on e.event_id = ex.event_id
+                where e.start_date < now()
+                and ce.cust_id = % s
+                order by e.end_date desc, e.start_date desc''', (session['id'],))
+        eventHist = cursor.fetchall()
 
-        cursor.execute('''select r.rental_id, b.book_name, r.borrow_date, DATE_ADD(r.borrow_date, INTERVAL 1 MONTH) as expRetDt 
-                from ags_rental r
-                left join ags_inventory i on r.copy_id = i.copy_id
-                left join ags_books b on i.book_id = b.book_id
-                where r.rental_status = 'B'
-                AND r.cust_id = % s''',(session['id'],))
-        bookBor = cursor.fetchall()
-        return  render_template('books.html', bookHist = bookHist, bookBor = bookBor, msg=msg)
+        cursor.execute('''select ce.registration_id, e.e_name, e.description,e.start_date,e.end_date from ags_cust_exh ce
+                left join ags_exhibition ex on ex.event_id = ce.event_id
+                inner join ags_event e on e.event_id = ex.event_id
+                where e.start_date > now()
+                and ce.cust_id = % s
+                order by e.start_date, end_date''',(session['id'],))
+        upcomingEvents = cursor.fetchall()
+        return  render_template('events.html', eventHist = eventHist, upcomingEvents = upcomingEvents, msg=msg)
     else:
         return render_template('login2.html', msg = 'Not logged in. Please login again')
+
+@app.route('/registerEvent', methods =['GET', 'POST'])
+def registerEvent():
+    msg = ''
+    if request.method == 'POST' and 'eventId' in request.form:
+        eventId = request.form['eventId']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+
+        cursor.execute('select * from ags_cust_exh where event_id = %s and cust_id = %s',(eventId,session['id']))
+        et = cursor.fetchall()
+
+        if et:
+            return home('You have already registered for this event. Check My Events')
+        else:
+            cursor.execute('select  ifnull(max(registration_id),0) from ags_cust_exh')
+            reg_ID = cursor.fetchone()
+            reg_ID = str(int(reg_ID[0]) + 1)
+
+            cursor.execute('insert into ags_cust_exh VALUES (%s, now(), %s, %s)', (reg_ID, session['id'], eventId))
+
+            conn.commit()
+            msg = 'Successfully Registered'
+    else:
+        msg = 'Some error occurred. Please complain to Admin.'
+    return events(msg)

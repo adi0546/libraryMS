@@ -39,7 +39,7 @@
               <h3>Book Inventory as of {{date}}</h3>
               <br><br>
               <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <table id="dtBasicExample" class="table mx-auto table-sm table-hover table-dark" style="width: 98%;"
+                <table id="dtBasicExample" class="table mx-auto table-sm table-hover table-dark" style="width: 100%;"
                   cellspacing="0" width="100%">
                   <thead>
                     <tr>
@@ -77,7 +77,7 @@
               <h3>Upcoming Events in the Library</h3>
               <br><br>
               <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <table id="dtBasicExample" class="table mx-auto table-sm table-hover table-dark" style="width: 98%;"
+                <table id="dtBasicExample" class="table table-sm table-hover table-dark" style="width: 100%"
                   cellspacing="0" width="100%">
                   <thead>
                     <tr>
@@ -98,6 +98,8 @@
                   </thead>
                   <tbody>
                     {% for event in events %}
+                    <form action="{{ url_for('registerEvent') }}" method="post">
+                      <input type="hidden" id="eventId" name="eventId" value={{event[0]}}>
                     <tr>
                       <td>{{event[1]}}</td>
                       <td>{{event[2]}}</td>
@@ -106,9 +108,12 @@
                       <td>{{event[5]}}</td>
                       <td>{{event[6]}}</td>
                       {% if event[5] == 'Exhibition' %}
-                      <td><a type='button' class='btn btn-outline-secondary' href="">Click to register</a></td>
+                      <td><button class="btn btn-secondary" type="submit">Click to Register</button></td>
+                      {% else %}
+                      <td></td>
                       {% endif %}
                     </tr>
+                  </form>
                     {% endfor %}
                   </tbody>
                 </table>
