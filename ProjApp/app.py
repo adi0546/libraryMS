@@ -367,3 +367,65 @@ def registerEvent():
     else:
         msg = 'Some error occurred. Please complain to Admin.'
     return events(msg)
+
+@app.route('/forgotPass', methods =['GET', 'POST'])
+def forgotPass():
+    msg = ''
+    ques = ''
+    if request.method == 'POST' and 'uName' in request.form:
+        uName = request.form['uName']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('SELECT cust_id FROM ags_customer WHERE username = % s', (uName, ))
+        custId = cursor.fetchone()
+        if not custId:
+            msg = 'User Doesn\'t exist'
+        else:
+            cursor.execute('''select ques_id,questions,answer,cust_id from ags_ques_cust qc
+                            left join ags_questions q on q.quesid = qc.ques_id where cust_id = % s order by ques_id''', custId[0])
+            ques = cursor.fetchall()
+            
+    if request.method == 'POST' and 'ans1' in request.form and 'ans2' in request.form and 'ans3' in request.form and 'cust_id' in request.form:
+        ans1 = request.form['ans1']
+        ans2 = request.form['ans2']
+        ans3 = request.form['ans3']
+        custid = request.form['cust_id']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('''select ques_id,questions,answer,cust_id from ags_ques_cust qc
+                            left join ags_questions q on q.quesid = qc.ques_id where cust_id = % s order by ques_id''', (custid,))
+        ques = cursor.fetchall()
+        exp1 = str(ques[0][2])
+        exp2 = str(ques[1][2])
+        exp3 = str(ques[2][2])
+        if ans1.lower() != exp1.lower() or ans2.lower() != exp2.lower() or ans3.lower() != exp3.lower():
+            msg = 'Answers Do not match'
+        else:
+            return render_template('passReset.html', custid = custid)
+
+    return render_template('forgotPass.html',msg = msg, ques = ques)
+
+@app.route('/passReset', methods =['GET', 'POST'])
+def passReset():
+    msg = 'aa'
+    custid = ''
+    if request.method == 'POST' and 'p1' in request.form and 'p2' in request.form and 'custid' in request.form:
+        p1 = request.form['p1']
+        p2 = request.form['p2']
+        custid = request.form['custid']
+        msg = 'ab'
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        if p1 != p2:
+            msg = 'Passwords Do not match'
+        elif custid == '':
+            return render_template('login2.html', msg = 'Some error occurred. Please try later.')
+        else:
+            encoded_str = p1.encode()
+            p1 = hashlib.sha256(encoded_str).hexdigest()
+            cursor.execute('update ags_customer set password = % s where cust_id = % s', (p1,custid,))
+            conn.commit()
+            msg = 'Successfully Changed Password'
+            return render_template('login2.html', msg = msg)
+
+    return render_template('passReset.html',msg = msg, custid = custid)
