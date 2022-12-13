@@ -52,7 +52,26 @@ def login2():
         else:
             msg = 'Incorrect username / password !'
     return render_template('login2.html', msg = msg)
- 
+
+@app.route('/admin-login', methods =['GET', 'POST'])
+def adminLogin():
+    msg = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+
+        if (username == 'admin' and password == 'admin'):
+            session['admin'] = True
+            session['loggedin'] = True
+            session['id'] = 'admin'
+            session['username'] = 'admin'
+            session['fname'] = 'admin'
+            msg = 'Admin Logged in successfully !'
+            return admin()
+        else:
+            msg = 'Incorrect username / password !'
+    return render_template('admin-login.html', msg = msg)
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
@@ -60,7 +79,15 @@ def logout():
     session.pop('username', None)
     session.pop('fname', None)
     return redirect(url_for('login2'))
- 
+
+@app.route('/logout-admin')
+def logoutAdmin():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
+    session.pop('fname', None)
+    return redirect(url_for('adminLogin'))
+
 @app.route('/register', methods =['GET', 'POST'])
 def register():
     msg = ''
@@ -105,15 +132,47 @@ def register():
         msg = 'Please fill out the form !'
     return render_template('register.html', msg = msg)
 
+@app.route('/register-book', methods =['GET', 'POST'])
+def registerBook():
+    msg = ''
+    if request.method == 'POST' and 'bookName' in request.form and 'bookDate' in request.form and session and session['id'] == 'admin':
+        bookName = request.form['bookName']
+        bookDate = request.form['bookDate']
+        conn = mysql.connect()
+        cursor =conn.cursor()
+
+        cursor.execute('select max(book_id) from ags_books;')
+        book_id = cursor.fetchone()
+        bId = book_id[0] + 1
+
+        cursor.execute('select max(copy_id) from ags_inventory;')
+        copy_id = cursor.fetchone()
+        cId = copy_id[0] + 1
+
+        cursor.execute('select book_id from ags_books where book_name = %s;', (bookName))
+        existingBook = cursor.fetchone()
+
+        if (existingBook != None) :
+            existingId = existingBook[0]
+            cursor.execute('INSERT INTO ags_inventory VALUES (%s, % s, % s)', (cId, 'A', existingId))
+        else:
+            cursor.execute('INSERT INTO ags_books VALUES (%s, % s, % s)', (bId, bookName, bookDate))
+            cursor.execute('INSERT INTO ags_inventory VALUES (%s, % s, % s)', (cId, 'A', bId))
+
+        conn.commit()
+        msg = 'You have successfully registered !'
+    return redirect(url_for('admin'))
+
+
 @app.route('/home')
 def home(msg = ''):
     if session:
-        
+
         conn = mysql.connect()
         cursor =conn.cursor()
         cursor.execute(
             '''select event_id,e_name,description,start_date,end_date,
-            case when event_type = 'S' then 'Seminar' else 'Exhibition' end as eventType, t.topic_name 
+            case when event_type = 'S' then 'Seminar' else 'Exhibition' end as eventType, t.topic_name
             from ags_event e
             inner join ags_topics t on e.topic_id = t.topic_id
             where start_date > now() order by start_date''')
@@ -121,7 +180,7 @@ def home(msg = ''):
 
         cursor.execute(
             '''select cpy.book_id,cpy.book_name, cpy.copies, GROUP_CONCAT(' ',a.fname,' ',a.lname) AS authors from
-            (select b.book_id, b.book_name,count(*) as copies from ags_books b 
+            (select b.book_id, b.book_name,count(*) as copies from ags_books b
             inner join ags_inventory i on b.book_id = i.book_id
             where i.status = 'A'
             group by b.book_id) cpy
@@ -134,6 +193,68 @@ def home(msg = ''):
         return  render_template('home.html',events = ets,books = books, date = datetime.now().strftime("%d-%b-%Y %H.%M %p"), msg = msg)
     else:
         return render_template('login2.html', msg = 'Not logged in. Please login again')
+
+@app.route('/admin')
+def admin(msg = ''):
+    if (session and session['id'] == 'admin'):
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute(
+            '''select event_id,e_name,description,start_date,end_date,
+            case when event_type = 'S' then 'Seminar' else 'Exhibition' end as eventType, t.topic_name
+            from ags_event e
+            inner join ags_topics t on e.topic_id = t.topic_id
+            where start_date > now() order by start_date''')
+        ets = cursor.fetchall()
+
+        cursor.execute(
+            '''select cpy.book_id,cpy.book_name, cpy.copies, GROUP_CONCAT(' ',a.fname,' ',a.lname) AS authors from
+            (select b.book_id, b.book_name,count(*) as copies from ags_books b
+            inner join ags_inventory i on b.book_id = i.book_id
+            where i.status = 'A'
+            group by b.book_id) cpy
+            left join ags_bks_aut ba on cpy.book_id = ba.book_id
+            left join ags_author a on a.author_id = ba.author_id
+            group by cpy.book_id;'''
+            )
+        books = cursor.fetchall()
+        return  render_template('admin-home.html', msg = msg, events = ets, books = books)
+    else:
+        return render_template('admin-login.html', msg = 'Not logged in. Please login again')
+
+
+@app.route('/addNewBook', methods =['GET', 'POST'])
+def addNewBook():
+    return  render_template('addNewBook.html')
+
+@app.route('/admin-books', methods =['GET', 'POST'])
+def adminBooks():
+    if (session and session['id'] == 'admin'):
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('''select r.cust_id,b.book_name,r.borrow_date,r.actual_ret_dt, inv.invoice_amount,
+                          IFNULL(SUM(P.payment_amount),0) AS amount_paid,
+                          inv.invoice_amount - IFNULL(SUM(P.payment_amount),0) AS balance
+                          from ags_rental r
+                          left join ags_inventory i on r.copy_id = i.copy_id
+                          left join ags_books b on i.book_id = b.book_id
+                          inner join ags_invoice inv on inv.rental_id = r.rental_id
+                          left join ags_payment p on inv.invoice_no = p.invoice_no
+                          where r.rental_status <> 'B'
+                          group by r.rental_id
+                          order by actual_ret_dt desc,borrow_date desc;''')
+        bookHist = cursor.fetchall()
+
+        cursor.execute('''select r.rental_id, b.book_name, r.borrow_date, DATE_ADD(r.borrow_date, INTERVAL 1 MONTH), r.cust_id as expRetDt
+                from ags_rental r
+                left join ags_inventory i on r.copy_id = i.copy_id
+                left join ags_books b on i.book_id = b.book_id
+                where r.rental_status = 'B'
+        ''')
+        bookBor = cursor.fetchall()
+        return  render_template('admin-books.html', bookHist = bookHist, bookBor = bookBor, msg='')
+    else:
+        return render_template('admin-login.html', msg = 'Not logged in. Please login again')
 
 @app.route('/borrow', methods =['GET', 'POST'])
 def borrow():
@@ -150,7 +271,7 @@ def borrow():
             cursor.execute('update ags_inventory set status = \'U\' where copy_id = %s', str(book[0]))
             cursor.execute('select max(rental_id) from ags_rental')
             rentalId = cursor.fetchone()
-            cursor.execute('''INSERT INTO ags_rental (rental_id, rental_status, borrow_date, actual_ret_dt, copy_id, cust_id) VALUES 
+            cursor.execute('''INSERT INTO ags_rental (rental_id, rental_status, borrow_date, actual_ret_dt, copy_id, cust_id) VALUES
                                  (% s, 'B', now(), NULL, % s, % s)''',(str(int(rentalId[0]) + 1), str(book[0]), session['id']))
             conn.commit()
             msg = 'Successfully Rented'# + str(int(rentalId[0]) + 1) + str(book[0])
@@ -164,7 +285,7 @@ def books(msg = ''):
         cursor.execute('call AGS_BOOK_HIST_BY_ID( % s)', (session['id'],))
         bookHist = cursor.fetchall()
 
-        cursor.execute('''select r.rental_id, b.book_name, r.borrow_date, DATE_ADD(r.borrow_date, INTERVAL 1 MONTH) as expRetDt 
+        cursor.execute('''select r.rental_id, b.book_name, r.borrow_date, DATE_ADD(r.borrow_date, INTERVAL 1 MONTH) as expRetDt
                 from ags_rental r
                 left join ags_inventory i on r.copy_id = i.copy_id
                 left join ags_books b on i.book_id = b.book_id
@@ -174,7 +295,7 @@ def books(msg = ''):
         return  render_template('books.html', bookHist = bookHist, bookBor = bookBor, msg=msg)
     else:
         return render_template('login2.html', msg = 'Not logged in. Please login again')
-    
+
 @app.route('/returnBook', methods =['GET', 'POST'])
 def returnBook():
     msg = ''
@@ -201,7 +322,7 @@ def profile():
     msg = ''
     if not session:
         return render_template('login2.html', msg = 'Not logged in. Please login again')
-    
+
     conn = mysql.connect()
     cursor =conn.cursor()
     cId = session['id']
@@ -273,6 +394,24 @@ def profile():
         msg = 'Please fill out the form !'
     return render_template('profile.html', msg = msg, customer = customer)
 
+@app.route('/admin-rooms')
+def adminRooms(msg = ''):
+    if (session and session['id'] == 'admin'):
+        conn = mysql.connect()
+        cursor =conn.cursor()
+        cursor.execute('select * from ags_room')
+        rooms = cursor.fetchall()
+        today = date.today()
+        minDate = today + timedelta(days = 1)
+        maxDate = today + timedelta(days = 30)
+        cursor.execute('''select res.reservation_id,r.room_id,r.room_name, date(res.reservation_date) as resDt, getTimeSlot(time_slot), res.cust_id AS timeSlot
+                from ags_reservation res
+                left join ags_room r on r.room_id = res.room_id
+                order by reservation_date desc, res.time_slot desc''')
+        reservations = cursor.fetchall()
+        return  render_template('admin-rooms.html', rooms = rooms, reservations = reservations, msg=msg, minDate = minDate, maxDate = maxDate)
+    else:
+        return render_template('admin-login.html', msg = 'Not logged in. Please login again')
 
 @app.route('/rooms')
 def rooms(msg = ''):
@@ -384,7 +523,7 @@ def forgotPass():
             cursor.execute('''select ques_id,questions,answer,cust_id from ags_ques_cust qc
                             left join ags_questions q on q.quesid = qc.ques_id where cust_id = % s order by ques_id''', custId[0])
             ques = cursor.fetchall()
-            
+
     if request.method == 'POST' and 'ans1' in request.form and 'ans2' in request.form and 'ans3' in request.form and 'cust_id' in request.form:
         ans1 = request.form['ans1']
         ans2 = request.form['ans2']
