@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="77BD3106-3D35-29A3-63D1-979C0F3CCA88" name="AGS_PAYMENT">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>399820AC-7FFA-7BE5-2C8E-C6CD6E53AA4B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PAYMENT_ID" id="43B4B41A-E56A-D10D-D4E8-FD604AF1C29F">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE PAYMENT ID]]></commentInRDBMS>
+<generatorID>F38926BC-E6C6-C7AF-91D6-349BACABDD68</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PAYMENT_METHOD" id="BDB72C26-9AC3-C53F-F13E-1221A2C62E9B">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[PAYMENT METHOD FOR RENTAL]]></commentInRDBMS>
+<generatorID>6CA918E0-B08F-EAAE-0FAB-A2CA91F1BB33</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PAYMENT_AMOUNT" id="178C3432-95CA-26F1-0A3F-1FDD572527EB">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[PAYMENT AMOUNT FOR RENTAL IN USD]]></commentInRDBMS>
+<generatorID>74E5CD04-E22B-E0D8-8B24-6D37CC13457C</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,6,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PAYMENT_NAME" id="B3238EDF-E2B7-A58D-695B-F1443ECD287E">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[CARD HOLDER NAME OR NAME OF PERSON WHO MADE PAYMENT]]></commentInRDBMS>
+<generatorID>71C01C70-4B23-E1AF-2189-4949F3F7C5DA</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="INVOICE_NO" id="BF63F3D7-355A-F732-41B9-5396FBF4F7C3">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>1B9B9B11-18A4-DB83-3A7B-B70183816DC6</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7F38755A-7CD6-0BB0-240C-CDAC1F8707F3" referredColumn="1B769EA6-5996-8166-1D99-FFB803FF63D8"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9BA9B769-866E-9911-6661-E54349F40F58" name="AGS_PAYMENT_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>45C25B5B-7022-7C02-33C5-25A35CED8E19</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="43B4B41A-E56A-D10D-D4E8-FD604AF1C29F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="13A02048-0357-9E3A-9A2F-08D6B93A136B" name="AGS_PAYMENT_AGS_INVOICE_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>67A642EB-627B-FBFE-02D9-BC91795A9136</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF63F3D7-355A-F732-41B9-5396FBF4F7C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

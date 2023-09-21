@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9027934F-4E89-618C-2F81-A2E0BF3BA958" name="AGS_SPONSOR">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>E96AE9A9-3A62-36BF-E8C5-E65E60DD7F9A</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SPONSOR_ID" id="D4E176CB-F7FC-187C-C3C8-A00DEA8C5DB8">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE SPONSOR ID]]></commentInRDBMS>
+<generatorID>2DEEF252-6EC0-80DA-E040-A75F2AF8F016</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FNAME" id="E02590D4-84F6-5ABE-2343-39F23E4826DE">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[SPONSOR FIRST NAME]]></commentInRDBMS>
+<generatorID>263EB720-2E93-4A73-9142-2E83F3C785BF</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LNAME" id="E4DDC605-284F-749F-1BF7-F365C7DC93BA">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[SPONSOR LAST NAME]]></commentInRDBMS>
+<generatorID>E525EEEF-38E1-96D5-EF09-B043A6AC40CF</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PHONENO" id="20D5BDC4-9095-9168-7407-286B5376DBD2">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[SPONSOR PHONE NUMBER]]></commentInRDBMS>
+<generatorID>46CD44C5-A052-D4D0-F3EA-0F58A8791D5A</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="021B30AD-F7DA-7E20-662B-13974EE09562">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[SPONSOR EMAIL]]></commentInRDBMS>
+<generatorID>E7ACD87D-8268-FE78-77B1-1EEFA7252022</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="86EA618C-AF77-71E9-DE54-9E2ED4A108C3" name="AGS_SPONSOR_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>E0E08CD4-1BCC-F8DF-0E2E-8424326514D8</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D4E176CB-F7FC-187C-C3C8-A00DEA8C5DB8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

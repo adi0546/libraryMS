@@ -1,0 +1,129 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title> Home </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link text-light active" href="{{url_for('admin')}}">Home <span
+            class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link text-light" href="{{url_for('adminBooks')}}">All Books</a>
+        <a class="nav-item nav-link text-light" href="{{url_for('rooms')}}">Rooms</a>
+        <a class="nav-item nav-link text-light" href="{{ url_for('logoutAdmin') }}">Logout</a>
+      </div>
+    </div>
+  </nav>
+  <section class="h-100 gradient-form" style="background-color: rgba(32, 28, 28, 0.49);">
+    <div class="container-xxl h-100" align="center">
+      <div class="card rounded-3 text-black" align="center">
+        <div class="card-body p-md-5 mx-md-4 " align="center">
+          <div class="header">
+            <h2 class="word">Welcome to REAL</h2>
+          </div>
+          <br><br>
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <h3>Book Inventory</h3>
+              <br><br>
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table id="dtBasicExample" class="table mx-auto table-sm table-hover table-dark" style="width: 100%;"
+                  cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="th-sm">Name
+                      </th>
+                      <th class="th-sm">Copies Available
+                      </th>
+                      <th class="th-sm">Authors
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for book in books %}
+                    <form action="{{ url_for('borrow') }}" method="post">
+                      <input type="hidden" id="bookId" name="bookId" value={{book[0]}}>
+                      <tr>
+                        <td>{{book[1]}}</td>
+                        <td>{{book[2]}}</td>
+                        {% if book[3] %}
+                        <td>{{book[3]}}</td>
+                        {% else %}
+                        <td>Info Not available</td>
+                        {% endif %}
+
+                      </tr>
+                    </form>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <form action="{{ url_for('addNewBook') }}" method="post">
+                <button class="btn btn-secondary" type="submit">Add New Book</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+              <h3>Upcoming Events in the Library</h3>
+              <br><br>
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table id="dtBasicExample" class="table table-sm table-hover table-dark" style="width: 100%"
+                  cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="th-sm">Name
+                      </th>
+                      <th class="th-sm">Description
+                      </th>
+                      <th class="th-sm">Start Date
+                      </th>
+                      <th class="th-sm">End Date
+                      </th>
+                      <th class="th-sm">Type
+                      </th>
+                      <th class="">Topic
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for event in events %}
+                    <form action="{{ url_for('registerEvent') }}" method="post">
+                      <input type="hidden" id="eventId" name="eventId" value={{event[0]}}>
+                    <tr>
+                      <td>{{event[1]}}</td>
+                      <td>{{event[2]}}</td>
+                      <td>{{event[3]}}</td>
+                      <td>{{event[4]}}</td>
+                      <td>{{event[5]}}</td>
+                      <td>{{event[6]}}</td>
+
+                    </tr>
+                  </form>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <div class="text-danger">{{ msg }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

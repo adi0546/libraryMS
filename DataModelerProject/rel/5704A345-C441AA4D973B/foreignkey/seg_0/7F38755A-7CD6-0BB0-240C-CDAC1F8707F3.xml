@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7F38755A-7CD6-0BB0-240C-CDAC1F8707F3" containerWithKeyObject="77BD3106-3D35-29A3-63D1-979C0F3CCA88" localFKIndex="13A02048-0357-9E3A-9A2F-08D6B93A136B" name="AGS_PAYMENT_AGS_INVOICE_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>67A642EB-627B-FBFE-02D9-BC91795A9136</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<referredTableLongName>AGS_INVOICE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>24B9AB75-0696-7A16-2901-242D3BB50A9F</referredTableID>
+<keyObject>BA983130-E00F-E245-12DC-9B0996BAD585</keyObject>
+<referredKeyID>BA983130-E00F-E245-12DC-9B0996BAD585</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>INVOICE_NO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

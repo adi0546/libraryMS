@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="02396ECA-F372-6FBC-FB61-694E38DFD4F4" name="AGS_RESERVATION">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 04:48:24 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="RESERVATION_ID" id="A96CFED1-54AA-308A-CD2F-D8057B79D046">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 04:48:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE RESERVATION ID]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TIME SLOT" id="F804D6F6-C74F-6A8B-1E47-BCD81D908F3E">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 04:48:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[ONE OF THE 4 TIME SLOTS OF RESERVATION]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CUST_ID" id="CDF84EFE-7345-48F6-BE47-6415E24EFDF0">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 04:49:22 UTC</createdTime>
+<generatorID>11237296-6C14-ADB1-BB93-C27417C02FB6</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>65F513C3-FBFF-664C-EB17-CC754011D54D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ROOM_ID" id="64A9DED9-82F8-0FF1-DA36-2059362D7196">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 04:49:29 UTC</createdTime>
+<generatorID>4AE54792-5933-BA10-49F3-61300B6D709B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>BF68CD3D-A4C2-3283-D7C4-6C63E85A6E4B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="RESERVATION_DATE" id="13AE30B9-1E5C-264B-5866-197AC94286F3">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-05 19:57:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[DATE OF RESERVATION]]></commentInRDBMS>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="76C211F8-BCAE-01DE-D716-9BD6C326FB79" name="AGS_RESERVATION PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 04:48:42 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A96CFED1-54AA-308A-CD2F-D8057B79D046</attributeRef>
+<attributeRef>CDF84EFE-7345-48F6-BE47-6415E24EFDF0</attributeRef>
+<attributeRef>64A9DED9-82F8-0FF1-DA36-2059362D7196</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

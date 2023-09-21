@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="505810DB-EEDA-8397-24F5-777906505993" name="AGS_BKS_AUT">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:10:12 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="AUTHOR_ID" id="34AC124C-3E61-6D5F-52F2-F864B0AB2263">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:11:21 UTC</createdTime>
+<generatorID>C63527F3-6C73-526F-C13A-9BBE87A46B09</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>A15E2466-1E64-FBE2-4F66-B4077E327E9C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="BOOK_ID" id="6AE17DC1-7FFA-F294-A752-130165BEBD0F">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-01 23:11:29 UTC</createdTime>
+<generatorID>63453BDA-7CB2-4928-4E18-F691D3B2AB4B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<engineerTo>
+<item key="5704A345-CD8F-E683-BDA8-C441AA4D973B" value="true"/>
+</engineerTo>
+<referedAttribute>9147D0CD-CCAC-EFA6-96A6-6F82A2554829</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

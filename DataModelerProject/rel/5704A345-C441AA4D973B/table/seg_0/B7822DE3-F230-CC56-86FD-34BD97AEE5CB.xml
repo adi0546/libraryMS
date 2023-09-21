@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B7822DE3-F230-CC56-86FD-34BD97AEE5CB" name="AGS_RENTAL">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>8881F87B-0128-781C-3546-7FCA418ABF1B</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="RENTAL_ID" id="FF4D68A7-BA4C-B426-4A6E-4AEB54A70DE5">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[UNIQUE RENTAL ID]]></commentInRDBMS>
+<generatorID>9EDF50F0-20E0-D7B5-D3C6-EBBA9B5B070D</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RENTAL_STATUS" id="8D127F30-3D61-D725-AB9A-DC49761D502D">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[RENTAL STATUS: 'B' BORROWED, 'R' RETURNED OR 'L' LATE]]></commentInRDBMS>
+<generatorID>19B46962-B3DA-12E8-4B6E-96779DB32F99</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BORROW_DATE" id="1F2F9FD6-D13C-5F76-139A-A5CBC2869368">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[RENTAL BORROW DATE]]></commentInRDBMS>
+<generatorID>5EE2937B-938D-6A88-99E7-8254124871A3</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ACTUAL_RET_DT" id="A0EC4EDC-3BCA-9D78-97EB-2080211821AC">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[ACTUAL RENTAL RETURN DATE]]></commentInRDBMS>
+<generatorID>D74D7B99-93C6-D244-1ED4-0DECD08916BB</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COPY_ID" id="FE1CD91C-B891-FAFF-3838-CD5F77119777">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>2E6A1D61-E11D-9C85-6FEE-779D65C99D67</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="979FBAB2-2023-9E0B-D037-1A60465C312F" referredColumn="30BD64C4-084A-83FC-74E0-F507DCE61FBF"/>
+</associations>
+</Column>
+<Column name="CUST_ID" id="47C574F4-E97A-0B4E-264C-BE81A388D579">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>D83193DD-D0E8-7F46-E7FD-5E816A30F178</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2F0BDD4A-28DE-31D6-58B5-37C7A8E48174" referredColumn="2683B103-A90E-244B-6FC0-F612FCE27987"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="262BCEC7-7288-3CC0-0FEB-5205956CD702" name="AGS_RENTAL_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>500FD1F6-64B4-95BB-A266-1959E80A3ACA</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF4D68A7-BA4C-B426-4A6E-4AEB54A70DE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9B56D6CE-B05E-B33F-2D0F-ADC6CC9D95A1" name="AGS_RENTAL_AGS_INVENTORY_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>86DF6311-AAD5-C9BF-E99F-7723643606A4</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE1CD91C-B891-FAFF-3838-CD5F77119777"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="133C9C14-8166-1BA6-4DA0-0365648E82ED" name="AGS_RENTAL_AGS_CUSTOMER_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>CF0970CF-4C4E-95C6-9EE6-FA31559530A2</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47C574F4-E97A-0B4E-264C-BE81A388D579"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

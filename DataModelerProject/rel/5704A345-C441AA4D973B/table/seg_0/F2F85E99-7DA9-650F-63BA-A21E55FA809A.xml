@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F2F85E99-7DA9-650F-63BA-A21E55FA809A" name="AGS_SEM_SPN">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>EE84694D-F2E3-C6BD-694B-F1B511688297</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EVENT_ID" id="C6FD759E-7786-CAB8-3A97-C30A2EFD2EAC">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>B6FCB02F-1DAB-C274-5DF7-362E76D6CD78</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="94883B17-7D41-7347-DE3D-6BDFB1B092D6" referredColumn="79E0FFCE-05A4-445B-D86F-EF3E3B8698A5"/>
+</associations>
+</Column>
+<Column name="SPONSOR_ID" id="81900F41-5D17-063B-7540-8F0946146175">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>527A6D53-77F7-D995-E674-BBE1A31E2F1A</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C060E7E3-5E2C-CAA8-7FB4-BE1554FABC0C" referredColumn="D4E176CB-F7FC-187C-C3C8-A00DEA8C5DB8"/>
+</associations>
+</Column>
+<Column name="SPONSOR_AMOUNT" id="C70FD646-32B7-0AB1-B049-275FF40FD77E">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[SPONSORSHIP AMOUNT IN USD]]></commentInRDBMS>
+<generatorID>DB756FE9-2348-C14B-1A16-D032B6EE3A01</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BB66D50A-2D16-388E-D9EA-25DFAC0B3F73" name="AGS_SEM_SPN_PK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:49:44 UTC</createdTime>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C6FD759E-7786-CAB8-3A97-C30A2EFD2EAC"/>
+<colUsage columnID="81900F41-5D17-063B-7540-8F0946146175"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C6E0AF15-004F-E3A0-F403-AC50198BB6E0" name="AGS_SEM_SPN_AGS_SEMINAR_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>B0113CCC-5728-2ADE-3AEC-639821684B11</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C6FD759E-7786-CAB8-3A97-C30A2EFD2EAC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1FA0660C-16D4-FDEF-6FF0-89685E5B36DA" name="AGS_SEM_SPN_AGS_SPONSOR_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>61AE98B7-F51B-9627-321A-8F963B394A47</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="81900F41-5D17-063B-7540-8F0946146175"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="979FBAB2-2023-9E0B-D037-1A60465C312F" containerWithKeyObject="B7822DE3-F230-CC56-86FD-34BD97AEE5CB" localFKIndex="9B56D6CE-B05E-B33F-2D0F-ADC6CC9D95A1" name="AGS_RENTAL_AGS_INVENTORY_FK">
+<createdBy>adi</createdBy>
+<createdTime>2022-11-03 19:40:48 UTC</createdTime>
+<generatorID>86DF6311-AAD5-C9BF-E99F-7723643606A4</generatorID>
+<ownerDesignName>AGSPROJ1</ownerDesignName>
+<referredTableLongName>AGS_INVENTORY</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1C5C328F-CC51-022B-FAE3-D35E7C9B3F4A</referredTableID>
+<keyObject>C450E3D4-AA46-8B79-B627-7FDCF3D6126A</keyObject>
+<referredKeyID>C450E3D4-AA46-8B79-B627-7FDCF3D6126A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>COPY_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
